@@ -15,7 +15,7 @@ class PokemonService {
   PokemonService(this.ref);
   final Ref ref;
 
-  Future<Pokemon> getPokemon(int id) async {
+  Future<Pokemon> getPokemon({required int id}) async {
     final pokemonApiRepository = ref.read(pokemonApiRepositoryProvider);
     final pokemon = await pokemonApiRepository.getPokemon(id);
     return pokemon;

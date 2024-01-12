@@ -9,7 +9,7 @@ part 'pokemon_notifier.g.dart';
 class PokemonNotifier extends _$PokemonNotifier {
   @override
   Future<Pokemon> build() async {
-    final pokemon = await ref.read(pokemonServiceProvider).getPokemon(1);
+    final pokemon = await ref.read(pokemonServiceProvider).getPokemon(id: 1);
     return pokemon;
   }
 }

@@ -13,7 +13,7 @@ class _PokemonApiRepository implements PokemonApiRepository {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://pokeapi.co/api/v2';
+    baseUrl ??= '/api/v2/pokemon';
   }
 
   final Dio _dio;
@@ -34,7 +34,7 @@ class _PokemonApiRepository implements PokemonApiRepository {
     )
             .compose(
               _dio.options,
-              '/pokemon/${id}',
+              '/${id}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -83,7 +83,7 @@ class _PokemonApiRepository implements PokemonApiRepository {
 // **************************************************************************
 
 String _$pokemonApiRepositoryHash() =>
-    r'77d7085171f818e64319ba58824b85db0d0918ca';
+    r'fa191b54780f210c8dcc60837f490ac89013deb8';
 
 /// See also [pokemonApiRepository].
 @ProviderFor(pokemonApiRepository)
