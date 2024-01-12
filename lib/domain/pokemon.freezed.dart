@@ -14,13 +14,21 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Pokemon _$PokemonFromJson(Map<String, dynamic> json) {
+  return _Pokemon.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Pokemon {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  @TypesConverter()
   List<String> get types => throw _privateConstructorUsedError;
+  @ImageUrlConverter()
+  @JsonKey(name: "sprites")
   String get imageUrl => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PokemonCopyWith<Pokemon> get copyWith => throw _privateConstructorUsedError;
 }
@@ -30,7 +38,11 @@ abstract class $PokemonCopyWith<$Res> {
   factory $PokemonCopyWith(Pokemon value, $Res Function(Pokemon) then) =
       _$PokemonCopyWithImpl<$Res, Pokemon>;
   @useResult
-  $Res call({int id, String name, List<String> types, String imageUrl});
+  $Res call(
+      {int id,
+      String name,
+      @TypesConverter() List<String> types,
+      @ImageUrlConverter() @JsonKey(name: "sprites") String imageUrl});
 }
 
 /// @nodoc
@@ -79,7 +91,11 @@ abstract class _$$PokemonImplCopyWith<$Res> implements $PokemonCopyWith<$Res> {
       __$$PokemonImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, List<String> types, String imageUrl});
+  $Res call(
+      {int id,
+      String name,
+      @TypesConverter() List<String> types,
+      @ImageUrlConverter() @JsonKey(name: "sprites") String imageUrl});
 }
 
 /// @nodoc
@@ -120,14 +136,17 @@ class __$$PokemonImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$PokemonImpl implements _Pokemon {
   const _$PokemonImpl(
       {required this.id,
       required this.name,
-      required final List<String> types,
-      required this.imageUrl})
+      @TypesConverter() required final List<String> types,
+      @ImageUrlConverter() @JsonKey(name: "sprites") required this.imageUrl})
       : _types = types;
+
+  factory _$PokemonImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PokemonImplFromJson(json);
 
   @override
   final int id;
@@ -135,6 +154,7 @@ class _$PokemonImpl implements _Pokemon {
   final String name;
   final List<String> _types;
   @override
+  @TypesConverter()
   List<String> get types {
     if (_types is EqualUnmodifiableListView) return _types;
     // ignore: implicit_dynamic_type
@@ -142,6 +162,8 @@ class _$PokemonImpl implements _Pokemon {
   }
 
   @override
+  @ImageUrlConverter()
+  @JsonKey(name: "sprites")
   final String imageUrl;
 
   @override
@@ -161,6 +183,7 @@ class _$PokemonImpl implements _Pokemon {
                 other.imageUrl == imageUrl));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name,
       const DeepCollectionEquality().hash(_types), imageUrl);
@@ -170,22 +193,36 @@ class _$PokemonImpl implements _Pokemon {
   @pragma('vm:prefer-inline')
   _$$PokemonImplCopyWith<_$PokemonImpl> get copyWith =>
       __$$PokemonImplCopyWithImpl<_$PokemonImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PokemonImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Pokemon implements Pokemon {
   const factory _Pokemon(
       {required final int id,
       required final String name,
-      required final List<String> types,
+      @TypesConverter() required final List<String> types,
+      @ImageUrlConverter()
+      @JsonKey(name: "sprites")
       required final String imageUrl}) = _$PokemonImpl;
+
+  factory _Pokemon.fromJson(Map<String, dynamic> json) = _$PokemonImpl.fromJson;
 
   @override
   int get id;
   @override
   String get name;
   @override
+  @TypesConverter()
   List<String> get types;
   @override
+  @ImageUrlConverter()
+  @JsonKey(name: "sprites")
   String get imageUrl;
   @override
   @JsonKey(ignore: true)
