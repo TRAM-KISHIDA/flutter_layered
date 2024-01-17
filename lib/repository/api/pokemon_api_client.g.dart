@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'pokemon_api_repository.dart';
+part of 'pokemon_api_client.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'pokemon_api_repository.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _PokemonApiRepository implements PokemonApiRepository {
-  _PokemonApiRepository(
+class _PokemonApiClient implements PokemonApiClient {
+  _PokemonApiClient(
     this._dio, {
     this.baseUrl,
   }) {
@@ -77,27 +77,3 @@ class _PokemonApiRepository implements PokemonApiRepository {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
-
-// **************************************************************************
-// RiverpodGenerator
-// **************************************************************************
-
-String _$pokemonApiRepositoryHash() =>
-    r'fa191b54780f210c8dcc60837f490ac89013deb8';
-
-/// See also [pokemonApiRepository].
-@ProviderFor(pokemonApiRepository)
-final pokemonApiRepositoryProvider =
-    AutoDisposeProvider<PokemonApiRepository>.internal(
-  pokemonApiRepository,
-  name: r'pokemonApiRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$pokemonApiRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef PokemonApiRepositoryRef = AutoDisposeProviderRef<PokemonApiRepository>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

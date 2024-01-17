@@ -2,7 +2,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../domain/pokemon.dart';
-import '../repository/pokemon_api_repository.dart';
+import '../repository/pokemon_repository.dart';
 
 part 'pokemon_service.g.dart';
 
@@ -16,8 +16,12 @@ class PokemonService {
   final Ref ref;
 
   Future<Pokemon> getPokemon({required int id}) async {
-    final pokemonApiRepository = ref.read(pokemonApiRepositoryProvider);
-    final pokemon = await pokemonApiRepository.getPokemon(id);
-    return pokemon;
+    try {
+      final pokemonRepository = ref.read(pokemonRepositoryProvider);
+      final pokemon = await pokemonRepository.getPokemon(id: id);
+      return pokemon;
+    } catch (error) {
+      throw error.toString();
+    }
   }
 }
